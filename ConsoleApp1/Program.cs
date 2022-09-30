@@ -17,9 +17,14 @@ using System.Security.Principal;
 //}
 //CreatureCat();
 //cat1.GetInfo(cat1);
-Computer computer1 = new Computer("Lenovo", "16gb", "500gb", "");
+Computer computer1 = new Computer("Lenovo", 16, "500gb", "");
+RAM ram1 = new RAM("Kingston",8);
 computer1.TurnOn();
 computer1.InstallOS("Windows");
 computer1.TurnOn();
 computer1.GetInfo();
 computer1.TurnOff();
+computer1.TurnOn();
+computer1.TurnOff();
+computer1.ChangeRAM(ram1);
+computer1.TurnOn();

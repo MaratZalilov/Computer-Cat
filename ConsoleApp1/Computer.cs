@@ -9,15 +9,15 @@ namespace ConsoleApp1
     internal class Computer
     {
         private string _name;
-        private string _sizeRAM;
+        private RAM _RAM;
         private string _sizeHDD;
         private string _oS;
         private bool _condition = false;
 
-        public Computer(string name, string sizeRAM, string sizeHDD, string operSis)
+        public Computer(string name, int sizeRAM, string sizeHDD, string operSis)
         {
             _name = name;
-            _sizeRAM = sizeRAM;
+            _RAM = new RAM("Nvidia",sizeRAM);
             _sizeHDD = sizeHDD;
             _oS = operSis;
         }
@@ -37,9 +37,9 @@ namespace ConsoleApp1
 
         public string InstallOS(string OS)
         {
+            _oS = OS;
             if (_condition == true)
             {
-                _oS = OS;
                 Console.WriteLine($"Начата установка операционной системы {OS}");
             }
             else if (_condition == false)
@@ -58,9 +58,21 @@ namespace ConsoleApp1
         public void GetInfo()
         {
             Console.WriteLine($"Имя компьютера - {_name}");
-            Console.WriteLine($"Количество Оперативной памяти - {_sizeRAM}");
+            _RAM.GetInfo();
             Console.WriteLine($"Количество памяти на жёстком диске - {_sizeHDD}");
             Console.WriteLine($"Тип Операционной системы - {_oS}");
+        }
+
+        public bool ChangeRAM(RAM myRAM)
+        {
+            if (_condition == true)
+            {
+                Console.WriteLine($"Невозможно заменить оперативную память при включённном пк");
+                return false;
+            }
+            _RAM = myRAM;
+            Console.WriteLine($"Оперативная память успешно заменена");
+            return true;
         }
     }
 }
