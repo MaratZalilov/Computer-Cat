@@ -17,3 +17,9 @@ using System.Security.Principal;
 //}
 //CreatureCat();
 //cat1.GetInfo(cat1);
+Computer computer1 = new Computer("Lenovo", "16gb", "500gb", "");
+computer1.TurnOn();
+computer1.InstallOS("Windows");
+computer1.TurnOn();
+computer1.GetInfo();
+computer1.TurnOff();
